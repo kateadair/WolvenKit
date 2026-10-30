@@ -5,11 +5,11 @@ on:
     branches:
       - wolvenmac
     paths:
-      - "Mac/WolvenKitMac/**"
+      - "Mac/**"
       - ".github/workflows/macos-native-build.yml"
   pull_request:
     paths:
-      - "Mac/WolvenKitMac/**"
+      - "Mac/**"
       - ".github/workflows/macos-native-build.yml"
   workflow_dispatch:
 
@@ -21,5 +21,7 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - name: Build native application
+      - name: Build the Swift package
         run: swift build --package-path Mac/WolvenKitMac
+      - name: Build the macOS application bundle
+        run: xcodebuild -project Mac/WolvenKitMac.xcodeproj -scheme WolvenKitMac -configuration Release -destination 'generic/platform=macOS' ARCHS=arm64 CODE_SIGNING_ALLOWED=NO build
