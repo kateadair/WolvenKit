@@ -33,7 +33,7 @@ struct CR2WMetadataReader: Sendable {
         let stringTableOffset = readUInt32(prefix, at: 40)
         let stringTableLength = readUInt32(prefix, at: 44)
 
-        guard stringTableOffset <= UInt64(size),
+        guard UInt64(stringTableOffset) <= UInt64(size),
               UInt64(stringTableLength) <= UInt64(size) - UInt64(stringTableOffset),
               stringTableLength > 1 else {
             return CR2WMetadata(
