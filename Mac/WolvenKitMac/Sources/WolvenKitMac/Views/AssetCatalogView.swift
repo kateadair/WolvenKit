@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AssetCatalogView: View {
     @StateObject private var viewModel: AssetCatalogViewModel
+    @State private var resourceMetadata: CR2WMetadata?
     let files: [ProjectFile]
 
     init(files: [ProjectFile]) {
@@ -70,6 +71,13 @@ struct AssetCatalogView: View {
         .onChange(of: files) { _, newFiles in
             viewModel.replaceFiles(newFiles)
         }
+        .task(id: viewModel.selectedFile?.url) {
+            guard let selectedFile = viewModel.selectedFile else {
+                resourceMetadata = nil
+                return
+            }
+            resourceMetadata = await CR2WMetadataReader().readMetadata(at: selectedFile.url)
+        }
     }
 
     @ViewBuilder
@@ -93,6 +101,21 @@ struct AssetCatalogView: View {
                     GridRow {
                         Text("Location").foregroundStyle(.secondary)
                         Text(file.relativePath).textSelection(.enabled)
+                    }
+                    if let resourceMetadata {
+                        GridRow {
+                            Text("Resource Class").foregroundStyle(.secondary)
+                            Text(resourceMetadata.rootClassName ?? "Unknown")
+                                .textSelection(.enabled)
+                        }
+                        GridRow {
+                            Text("Format Version").foregroundStyle(.secondary)
+                            Text("\(resourceMetadata.version) · build \(resourceMetadata.buildVersion)")
+                        }
+                        GridRow {
+                            Text("Chunks").foregroundStyle(.secondary)
+                            Text("\(resourceMetadata.chunkCount)")
+                        }
                     }
                 }
                 .font(.callout)
