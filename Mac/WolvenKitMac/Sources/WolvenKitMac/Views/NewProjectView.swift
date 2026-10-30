@@ -11,6 +11,7 @@ struct NewProjectView: View {
     @State private var email = ""
     @State private var version = "1.0.0"
     @State private var isSelectingFolder = false
+    @State private var hasParentDirectoryAccess = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -61,9 +62,17 @@ struct NewProjectView: View {
         .frame(width: 520)
         .fileImporter(isPresented: $isSelectingFolder, allowedContentTypes: [.folder], allowsMultipleSelection: false) { result in
             if case .success(let urls) = result, let url = urls.first {
-                let hasAccess = url.startAccessingSecurityScopedResource()
-                if hasAccess { url.stopAccessingSecurityScopedResource() }
+                if hasParentDirectoryAccess {
+                    parentDirectory?.stopAccessingSecurityScopedResource()
+                }
+                hasParentDirectoryAccess = url.startAccessingSecurityScopedResource()
                 parentDirectory = url
+            }
+        }
+        .onDisappear {
+            if hasParentDirectoryAccess {
+                parentDirectory?.stopAccessingSecurityScopedResource()
+                hasParentDirectoryAccess = false
             }
         }
     }
@@ -85,6 +94,10 @@ struct NewProjectView: View {
                 email: email,
                 version: version
             )
+            if hasParentDirectoryAccess {
+                parentDirectory.stopAccessingSecurityScopedResource()
+                hasParentDirectoryAccess = false
+            }
             if viewModel.errorMessage == nil { dismiss() }
         }
     }
