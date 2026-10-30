@@ -5,6 +5,7 @@ import AppKit
 struct ProjectWorkspaceView: View {
     @ObservedObject var viewModel: WorkspaceViewModel
     @State private var selectedProjectID: URL?
+    @State private var isPresentingArchiveImporter = false
 
     var body: some View {
         NavigationSplitView {
@@ -36,6 +37,13 @@ struct ProjectWorkspaceView: View {
                         Label("Open Project", systemImage: "folder")
                     }
                     .help("Open a project file")
+
+                    Button {
+                        isPresentingArchiveImporter = true
+                    } label: {
+                        Label("Open Archive", systemImage: "archivebox")
+                    }
+                    .help("Read an archive index")
                 }
             }
         } detail: {
@@ -63,10 +71,25 @@ struct ProjectWorkspaceView: View {
                 viewModel.errorMessage = error.localizedDescription
             }
         }
+        .fileImporter(
+            isPresented: $isPresentingArchiveImporter,
+            allowedContentTypes: [UTType(filenameExtension: "archive") ?? .data],
+            allowsMultipleSelection: false
+        ) { result in
+            switch result {
+            case .success(let urls):
+                guard let url = urls.first else { return }
+                Task {
+                    await viewModel.openArchive(at: url)
+                }
+            case .failure(let error):
+                viewModel.errorMessage = error.localizedDescription
+            }
+        }
         .sheet(isPresented: $viewModel.isPresentingNewProject) {
             NewProjectView(viewModel: viewModel)
         }
-        .alert("Project Error", isPresented: Binding(
+        .alert("WolvenKit Error", isPresented: Binding(
             get: { viewModel.errorMessage != nil },
             set: { if !$0 { viewModel.errorMessage = nil } }
         )) {
@@ -78,7 +101,13 @@ struct ProjectWorkspaceView: View {
 
     @ViewBuilder
     private var detailView: some View {
-        if let project = viewModel.activeProject {
+        if let archive = viewModel.archiveCatalog {
+            ArchiveCatalogView(
+                catalog: archive,
+                onClose: viewModel.closeArchive,
+                exportEntry: viewModel.exportArchiveEntry(_:to:)
+            )
+        } else if let project = viewModel.activeProject {
             ProjectDetailView(
                 project: project,
                 files: viewModel.projectFiles,
