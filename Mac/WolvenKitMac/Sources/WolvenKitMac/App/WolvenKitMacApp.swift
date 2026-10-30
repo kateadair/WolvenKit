@@ -16,6 +16,12 @@ struct WolvenKitMacApp: App {
                 }
                 .keyboardShortcut("n", modifiers: .command)
             }
+            CommandGroup(after: .newItem) {
+                Button("Open Project…") {
+                    workspace.isPresentingOpenProject = true
+                }
+                .keyboardShortcut("o", modifiers: .command)
+            }
         }
     }
 }
