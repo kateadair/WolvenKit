@@ -28,4 +28,4 @@ jobs:
       - name: Build the Swift package
         run: swift build --package-path Mac/WolvenKitMac
       - name: Build the macOS application bundle
-        run: xcodebuild -project Mac/WolvenKitMac.xcodeproj -scheme WolvenKitMac -configuration Release -destination 'generic/platform=macOS' ARCHS=arm64 CODE_SIGNING_ALLOWED=NO build
+        run: xcodebuild -project Mac/WolvenKitMac.xcodeproj -scheme WolvenKitMac -configuration Release -destination 'generic/platform=macOS' ARCHS='arm64 x86_64' ONLY_ACTIVE_ARCH=NO CODE_SIGNING_ALLOWED=NO build

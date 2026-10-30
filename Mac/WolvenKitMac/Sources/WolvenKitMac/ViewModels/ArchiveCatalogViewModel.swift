@@ -5,6 +5,7 @@ enum ArchiveEntryFilter: String, CaseIterable, Identifiable {
     case all = "All Entries"
     case multipleSegments = "Multiple Segments"
     case uncompressed = "Uncompressed"
+    case compressed = "Compressed"
 
     var id: String { rawValue }
 
@@ -16,6 +17,8 @@ enum ArchiveEntryFilter: String, CaseIterable, Identifiable {
             return entry.segments.count > 1
         case .uncompressed:
             return entry.canReadWithoutCodec
+        case .compressed:
+            return !entry.canReadWithoutCodec
         }
     }
 }

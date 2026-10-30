@@ -47,6 +47,8 @@ struct ArchiveEntry: Identifiable, Hashable, Sendable {
         guard let mainSegment = segments.first else { return false }
         return mainSegment.compressedSize == mainSegment.uncompressedSize
     }
+
+    var canAttemptExport: Bool { !segments.isEmpty }
 }
 
 struct ArchiveCatalog: Identifiable, Hashable, Sendable {

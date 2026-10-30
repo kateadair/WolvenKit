@@ -114,21 +114,21 @@ struct ArchiveCatalogView: View {
                         Label("The main segment is stored without archive compression; embedded buffers remain in their resource encoding.", systemImage: "checkmark.circle")
                             .font(.caption)
                             .foregroundStyle(.secondary)
-                        Button {
-                            export(entry)
-                        } label: {
-                            Label("Export Entry…", systemImage: "square.and.arrow.down")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
                     } else {
-                        Label("This entry contains compressed segments.", systemImage: "info.circle")
+                        Label("This entry contains a compressed main segment.", systemImage: "info.circle")
                             .font(.caption)
                             .foregroundStyle(.secondary)
-                        Text("Export becomes available when the required decoder is implemented.")
+                        Text("Export supports KARK stored and repeated-byte Kraken blocks. Unsupported entropy-coded blocks produce a precise decoding error.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
+                    Button {
+                        export(entry)
+                    } label: {
+                        Label("Export Entry…", systemImage: "square.and.arrow.down")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
 
                     Divider()
                     Text("Segment ranges")

@@ -2,7 +2,9 @@ import Foundation
 
 struct ArchivePayloadService: Sendable {
     func export(_ entry: ArchiveEntry, from catalog: ArchiveCatalog, to destination: URL) async throws {
-        guard entry.canReadWithoutCodec else { throw ArchiveReaderError.compressedEntry }
+        guard entry.canAttemptExport else {
+            throw ArchiveReaderError.invalidEntry("The selected entry does not contain any data segments.")
+        }
         guard destination.standardizedFileURL != catalog.archiveURL.standardizedFileURL else {
             throw ArchiveReaderError.invalidEntry("The output path cannot replace the source archive.")
         }
@@ -43,13 +45,27 @@ struct ArchivePayloadService: Sendable {
             }
 
             try input.seek(toOffset: segment.offset)
-            var remaining = Int(index == 0 ? segment.uncompressedSize : segment.compressedSize)
-            while remaining > 0 {
-                let chunkSize = min(remaining, 1_048_576)
-                let chunk = try readExactly(chunkSize, from: input)
-                try output.write(contentsOf: chunk)
-                remaining -= chunk.count
-                written += UInt64(chunk.count)
+            if index == 0, segment.compressedSize != segment.uncompressedSize {
+                guard segment.compressedSize <= UInt32(KrakenDecoder.Limits.default.maximumInputSize) else {
+                    throw KrakenDecodingError.inputLimitExceeded
+                }
+                let packed = try readExactly(Int(segment.compressedSize), from: input)
+                let decoded = try KrakenDecoder().decode(packed)
+                guard decoded.count == Int(segment.uncompressedSize) else {
+                    throw ArchiveReaderError.invalidEntry("The decoded main segment size does not match its index record.")
+                }
+                try output.write(contentsOf: decoded)
+                written += UInt64(decoded.count)
+            } else {
+                let remainingSize = Int(index == 0 ? segment.uncompressedSize : segment.compressedSize)
+                var remaining = remainingSize
+                while remaining > 0 {
+                    let chunkSize = min(remaining, 1_048_576)
+                    let chunk = try readExactly(chunkSize, from: input)
+                    try output.write(contentsOf: chunk)
+                    remaining -= chunk.count
+                    written += UInt64(chunk.count)
+                }
             }
         }
 
