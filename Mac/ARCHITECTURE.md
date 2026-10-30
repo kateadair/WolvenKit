@@ -39,7 +39,7 @@ Services are passed into view models through initializers. Long-running indexing
 |---|---|---|
 | Project workspace | Create/open project, preserve metadata, recents, project file listing | Implemented in the first slice |
 | Asset intake | Copy selected files into project source folders with collision-safe names | Implemented in the first slice |
-| Asset catalog | Search, filter, sort, preview, and inspect indexed project and game assets | Next |
+| Asset catalog | Search, filter, sort, and inspect indexed project files | Implemented in the second slice |
 | Archive access | Enumerate archive records, resolve paths and hashes, read entry payloads | Not started |
 | Resource formats | Parse and serialize resource types, validate fields, preserve unknown data | Not started |
 | Editors | Structured resource editor, graph editor, timeline editor, localization and tweak tools | Not started |
