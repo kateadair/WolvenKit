@@ -36,15 +36,14 @@ struct ArchivePayloadService: Sendable {
         }
 
         var written: UInt64 = 0
-        for segment in entry.segments {
-            guard segment.compressedSize == segment.uncompressedSize,
-                  segment.offset <= currentSize,
+        for (index, segment) in entry.segments.enumerated() {
+            guard segment.offset <= currentSize,
                   UInt64(segment.compressedSize) <= currentSize - segment.offset else {
                 throw ArchiveReaderError.archiveChanged
             }
 
             try input.seek(toOffset: segment.offset)
-            var remaining = Int(segment.compressedSize)
+            var remaining = Int(index == 0 ? segment.uncompressedSize : segment.compressedSize)
             while remaining > 0 {
                 let chunkSize = min(remaining, 1_048_576)
                 let chunk = try readExactly(chunkSize, from: input)
@@ -54,7 +53,7 @@ struct ArchivePayloadService: Sendable {
             }
         }
 
-        guard written == entry.uncompressedByteCount else {
+        guard written == entry.fileByteCount else {
             throw ArchiveReaderError.invalidEntry("The extracted byte count does not match the indexed entry size.")
         }
 

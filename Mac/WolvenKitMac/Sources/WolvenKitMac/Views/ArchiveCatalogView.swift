@@ -78,7 +78,7 @@ struct ArchiveCatalogView: View {
                         Text(entry.displayName)
                             .font(.system(.body, design: .monospaced))
                         Spacer()
-                        Text(entry.uncompressedByteCount, format: .byteCount(style: .file))
+                        Text(entry.fileByteCount, format: .byteCount(style: .file))
                             .font(.caption.monospacedDigit())
                             .foregroundStyle(.secondary)
                     }
@@ -103,14 +103,15 @@ struct ArchiveCatalogView: View {
                         valueRow("Segments", "\(entry.segments.count)")
                         valueRow("Inline buffers", "\(entry.inlineBufferSegmentCount)")
                         valueRow("Stored size", entry.compressedByteCount.formatted(.byteCount(style: .file)))
-                        valueRow("Expanded size", entry.uncompressedByteCount.formatted(.byteCount(style: .file)))
+                        valueRow("Reconstructed file", entry.fileByteCount.formatted(.byteCount(style: .file)))
+                        valueRow("Expanded segments", entry.uncompressedByteCount.formatted(.byteCount(style: .file)))
                         valueRow("Timestamp", entry.timestamp.formatted(date: .abbreviated, time: .shortened))
                         valueRow("SHA-1", entry.sha1.map { String(format: "%02x", $0) }.joined())
                     }
                     .font(.callout)
 
                     if entry.canReadWithoutCodec {
-                        Label("All segments are stored without compression.", systemImage: "checkmark.circle")
+                        Label("The main segment is stored without archive compression; embedded buffers remain in their resource encoding.", systemImage: "checkmark.circle")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         Button {

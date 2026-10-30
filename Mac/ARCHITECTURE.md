@@ -40,11 +40,11 @@ Services are passed into view models through initializers. Long-running indexing
 | Project workspace | Create/open project, preserve metadata, recents, project file listing | Implemented in the first slice |
 | Asset intake | Copy selected files into project source folders with collision-safe names | Implemented in the first slice |
 | Asset catalog | Search, filter, sort, and inspect indexed project files | Implemented in the second slice |
-| Archive access | Validate headers and indexes, list hashed entries, export uncompressed segments | Implemented in the third slice |
-| Resource formats | Parse and serialize resource types, validate fields, preserve unknown data | Header metadata reader implemented; typed decoding not started |
-| Editors | Structured resource editor, graph editor, timeline editor, localization and tweak tools | Not started |
-| Conversion pipeline | Import/export formats, image/audio conversion, batch operations and progress | Not started |
-| Scripting | Isolated script execution, editor integration, diagnostics and permissions | Not started |
+| Archive access and build | Validate headers and indexes, list entries, extract raw-main entries, create archives from hash-named files and preserve internal resource buffers | Index read, raw extraction and uncompressed archive build implemented; Kraken decoding remains unavailable |
+| Resource formats | Parse headers, tables, imports, exports, buffers, embedded entries and variable records | Structural parsing, scalar primitive decoding, and checksum-preserving same-length byte edits implemented; complex typed values and full serialization remain |
+| Editors | Edit text and resource bytes, preview audio, convert images | Text, image, audio preview and raw resource editors implemented; typed resource, graph, timeline, localization and tweak editors remain |
+| Conversion pipeline | Import/export formats, image/audio conversion, batch operations and progress | PNG/JPEG/TIFF image conversion implemented; broader media and game-format conversion remains |
+| Scripting | Isolated script execution, editor integration, diagnostics and permissions | JavaScript project inspection and reviewable text edits implemented; broader app APIs and execution controls remain |
 | Preferences | Game locations, author defaults, editor behavior and persistent user settings | Not started |
 
 ## Delivery sequence

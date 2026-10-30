@@ -6,6 +6,7 @@ struct ProjectWorkspaceView: View {
     @ObservedObject var viewModel: WorkspaceViewModel
     @State private var selectedProjectID: URL?
     @State private var isPresentingArchiveImporter = false
+    @State private var isPresentingScriptRunner = false
 
     var body: some View {
         NavigationSplitView {
@@ -44,6 +45,20 @@ struct ProjectWorkspaceView: View {
                         Label("Open Archive", systemImage: "archivebox")
                     }
                     .help("Read an archive index")
+
+                    Button {
+                        viewModel.isPresentingArchiveBuilder = true
+                    } label: {
+                        Label("Build Archive", systemImage: "archivebox.badge.plus")
+                    }
+                    .help("Build an archive from hash-named files")
+
+                    Button {
+                        isPresentingScriptRunner = true
+                    } label: {
+                        Label("Scripts", systemImage: "curlybraces")
+                    }
+                    .help("Run a project script")
                 }
             }
         } detail: {
@@ -88,6 +103,12 @@ struct ProjectWorkspaceView: View {
         }
         .sheet(isPresented: $viewModel.isPresentingNewProject) {
             NewProjectView(viewModel: viewModel)
+        }
+        .sheet(isPresented: $viewModel.isPresentingArchiveBuilder) {
+            ArchiveBuilderView(viewModel: viewModel)
+        }
+        .sheet(isPresented: $isPresentingScriptRunner) {
+            ScriptRunnerView(viewModel: viewModel)
         }
         .alert("WolvenKit Error", isPresented: Binding(
             get: { viewModel.errorMessage != nil },

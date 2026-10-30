@@ -21,6 +21,19 @@
 		A1000000000000000000000D /* AssetCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* AssetCatalogView.swift */; };
 		A1000000000000000000000E /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000E /* NewProjectView.swift */; };
 		A1000000000000000000000F /* ProjectWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000F /* ProjectWorkspaceView.swift */; };
+		A10000000000000000000010 /* ArchiveBuilderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000012 /* ArchiveBuilderService.swift */; };
+		A10000000000000000000011 /* CR2WDocumentReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000013 /* CR2WDocumentReader.swift */; };
+		A10000000000000000000012 /* CR2WEditingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000014 /* CR2WEditingService.swift */; };
+		A10000000000000000000013 /* CR2WDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000015 /* CR2WDocument.swift */; };
+		A10000000000000000000014 /* ArchiveBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000016 /* ArchiveBuilderView.swift */; };
+		A10000000000000000000015 /* HexPayloadEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000017 /* HexPayloadEditorView.swift */; };
+		A10000000000000000000016 /* TextAssetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000018 /* TextAssetService.swift */; };
+		A10000000000000000000017 /* ImageConversionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000019 /* ImageConversionService.swift */; };
+		A10000000000000000000018 /* ScriptRunnerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001A /* ScriptRunnerService.swift */; };
+		A10000000000000000000019 /* ScriptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001B /* ScriptModels.swift */; };
+		A1000000000000000000001A /* TextAssetEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001C /* TextAssetEditorView.swift */; };
+		A1000000000000000000001B /* ScriptRunnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001D /* ScriptRunnerView.swift */; };
+		A1000000000000000000001C /* AudioPreviewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001E /* AudioPreviewControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +54,19 @@
 		B1000000000000000000000F /* ProjectWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWorkspaceView.swift; sourceTree = "<group>"; };
 		B10000000000000000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10000000000000000000011 /* WolvenKitMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolvenKitMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000012 /* ArchiveBuilderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBuilderService.swift; sourceTree = "<group>"; };
+		B10000000000000000000013 /* CR2WDocumentReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WDocumentReader.swift; sourceTree = "<group>"; };
+		B10000000000000000000014 /* CR2WEditingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WEditingService.swift; sourceTree = "<group>"; };
+		B10000000000000000000015 /* CR2WDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WDocument.swift; sourceTree = "<group>"; };
+		B10000000000000000000016 /* ArchiveBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBuilderView.swift; sourceTree = "<group>"; };
+		B10000000000000000000017 /* HexPayloadEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPayloadEditorView.swift; sourceTree = "<group>"; };
+		B10000000000000000000018 /* TextAssetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAssetService.swift; sourceTree = "<group>"; };
+		B10000000000000000000019 /* ImageConversionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConversionService.swift; sourceTree = "<group>"; };
+		B1000000000000000000001A /* ScriptRunnerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptRunnerService.swift; sourceTree = "<group>"; };
+		B1000000000000000000001B /* ScriptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptModels.swift; sourceTree = "<group>"; };
+		B1000000000000000000001C /* TextAssetEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAssetEditorView.swift; sourceTree = "<group>"; };
+		B1000000000000000000001D /* ScriptRunnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptRunnerView.swift; sourceTree = "<group>"; };
+		B1000000000000000000001E /* AudioPreviewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPreviewControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,18 +78,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C10000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000004, A10000000000000000000005, A10000000000000000000006, A10000000000000000000007, A10000000000000000000008, A10000000000000000000009, A1000000000000000000000A, A1000000000000000000000B, A1000000000000000000000C, A1000000000000000000000D, A1000000000000000000000E, A1000000000000000000000F, ); runOnlyForDeploymentPostprocessing = 0; };
+		C10000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000004, A10000000000000000000005, A10000000000000000000006, A10000000000000000000007, A10000000000000000000008, A10000000000000000000009, A1000000000000000000000A, A1000000000000000000000B, A1000000000000000000000C, A1000000000000000000000D, A1000000000000000000000E, A1000000000000000000000F, A10000000000000000000010, A10000000000000000000011, A10000000000000000000012, A10000000000000000000013, A10000000000000000000014, A10000000000000000000015, A10000000000000000000016, A10000000000000000000017, A10000000000000000000018, A10000000000000000000019, A1000000000000000000001A, A1000000000000000000001B, A1000000000000000000001C, ); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXGroup section */
 		D10000000000000000000001 = {isa = PBXGroup; children = (D10000000000000000000002 /* Sources */, D10000000000000000000003 /* Resources */, B10000000000000000000011 /* WolvenKitMac.app */, ); sourceTree = "<group>"; };
 		D10000000000000000000002 /* Sources */ = {isa = PBXGroup; path = WolvenKitMac/Sources/WolvenKitMac; sourceTree = "<group>"; children = (D10000000000000000000004 /* App */, D10000000000000000000005 /* Models */, D10000000000000000000006 /* Services */, D10000000000000000000007 /* ViewModels */, D10000000000000000000008 /* Views */, ); };
-		D10000000000000000000003 /* Resources */ = {isa = PBXGroup; path = WolvenKitMac/Resources; sourceTree = "<group>"; children = (B10000000000000000000010 /* Info.plist */, ); };
+		D10000000000000000000003 /* Resources */ = {isa = PBXGroup; path = WolvenKit/Resources; sourceTree = "<group>"; children = (B10000000000000000000010 /* Info.plist */, ); };
 		D10000000000000000000004 /* App */ = {isa = PBXGroup; path = App; sourceTree = "<group>"; children = (B10000000000000000000001 /* WolvenKitMacApp.swift */, ); };
-		D10000000000000000000005 /* Models */ = {isa = PBXGroup; path = Models; sourceTree = "<group>"; children = (B10000000000000000000002 /* ArchiveCatalog.swift */, B10000000000000000000003 /* CR2WMetadata.swift */, B10000000000000000000004 /* WolvenProject.swift */, ); };
-		D10000000000000000000006 /* Services */ = {isa = PBXGroup; path = Services; sourceTree = "<group>"; children = (B10000000000000000000005 /* ArchiveIndexReader.swift */, B10000000000000000000006 /* ArchivePayloadService.swift */, B10000000000000000000007 /* CR2WMetadataReader.swift */, B10000000000000000000008 /* ProjectStore.swift */, ); };
+		D10000000000000000000005 /* Models */ = {isa = PBXGroup; path = Models; sourceTree = "<group>"; children = (B10000000000000000000002 /* ArchiveCatalog.swift */, B10000000000000000000003 /* CR2WMetadata.swift */, B10000000000000000000004 /* WolvenProject.swift */, B10000000000000000000015 /* CR2WDocument.swift */, B1000000000000000000001B /* ScriptModels.swift */, ); };
+		D10000000000000000000006 /* Services */ = {isa = PBXGroup; path = Services; sourceTree = "<group>"; children = (B10000000000000000000005 /* ArchiveIndexReader.swift */, B10000000000000000000006 /* ArchivePayloadService.swift */, B10000000000000000000007 /* CR2WMetadataReader.swift */, B10000000000000000000008 /* ProjectStore.swift */, B10000000000000000000012 /* ArchiveBuilderService.swift */, B10000000000000000000013 /* CR2WDocumentReader.swift */, B10000000000000000000014 /* CR2WEditingService.swift */, B10000000000000000000018 /* TextAssetService.swift */, B10000000000000000000019 /* ImageConversionService.swift */, B1000000000000000000001A /* ScriptRunnerService.swift */, ); };
 		D10000000000000000000007 /* ViewModels */ = {isa = PBXGroup; path = ViewModels; sourceTree = "<group>"; children = (B10000000000000000000009 /* ArchiveCatalogViewModel.swift */, B1000000000000000000000A /* AssetCatalogViewModel.swift */, B1000000000000000000000B /* WorkspaceViewModel.swift */, ); };
-		D10000000000000000000008 /* Views */ = {isa = PBXGroup; path = Views; sourceTree = "<group>"; children = (B1000000000000000000000C /* ArchiveCatalogView.swift */, B1000000000000000000000D /* AssetCatalogView.swift */, B1000000000000000000000E /* NewProjectView.swift */, B1000000000000000000000F /* ProjectWorkspaceView.swift */, ); };
+		D10000000000000000000008 /* Views */ = {isa = PBXGroup; path = Views; sourceTree = "<group>"; children = (B1000000000000000000000C /* ArchiveCatalogView.swift */, B1000000000000000000000D /* AssetCatalogView.swift */, B1000000000000000000000E /* NewProjectView.swift */, B1000000000000000000000F /* ProjectWorkspaceView.swift */, B10000000000000000000016 /* ArchiveBuilderView.swift */, B10000000000000000000017 /* HexPayloadEditorView.swift */, B1000000000000000000001C /* TextAssetEditorView.swift */, B1000000000000000000001D /* ScriptRunnerView.swift */, B1000000000000000000001E /* AudioPreviewControl.swift */, ); };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */

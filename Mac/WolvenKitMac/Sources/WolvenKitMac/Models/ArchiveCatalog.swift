@@ -38,8 +38,14 @@ struct ArchiveEntry: Identifiable, Hashable, Sendable {
         segments.reduce(0) { $0 + UInt64($1.uncompressedSize) }
     }
 
+    var fileByteCount: UInt64 {
+        guard let first = segments.first else { return 0 }
+        return UInt64(first.uncompressedSize) + segments.dropFirst().reduce(0) { $0 + UInt64($1.compressedSize) }
+    }
+
     var canReadWithoutCodec: Bool {
-        segments.allSatisfy { $0.compressedSize == $0.uncompressedSize }
+        guard let mainSegment = segments.first else { return false }
+        return mainSegment.compressedSize == mainSegment.uncompressedSize
     }
 }
 
@@ -78,7 +84,7 @@ enum ArchiveReaderError: LocalizedError {
         case .invalidEntry(let detail):
             return "The archive contains an invalid entry: \(detail)"
         case .compressedEntry:
-            return "This entry contains compressed segments that cannot yet be decoded by this build."
+            return "The archive's main segment uses a compressed codec that is not available in this build."
         case .archiveChanged:
             return "The archive changed after it was indexed. Open it again before exporting entries."
         }

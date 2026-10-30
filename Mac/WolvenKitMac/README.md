@@ -19,9 +19,11 @@ xcodebuild -project Mac/WolvenKitMac.xcodeproj -scheme WolvenKitMac -configurati
 
 The workspace module creates and opens `.cpmodproj` project files, writes the project metadata as XML, stores recent project paths in the user's preferences, creates the standard project directory structure, and lists files in the selected project. Project files remain at the user-selected location. Files and folders can be imported into `source/raw`; folder hierarchies are preserved, hidden items and symbolic links are skipped, and collisions receive unique names. The asset catalog supports search, category filters, sorting, and resource header inspection.
 
-The archive catalog validates the archive header and index tables, displays entry hashes, segment ranges, sizes, timestamps, and SHA-1 values, and exports entries whose segments are stored without compression. Compressed entry decoding is not part of this build.
+The archive catalog validates archive headers and index tables, displays entry hashes, segment ranges, sizes, timestamps, and SHA-1 values, and exports entries whose main segment is stored without archive compression. The archive builder accepts numeric-hash-named files, preserves resource buffer segments, and writes valid uncompressed archive entries. Kraken-compressed main segments still require a native Apple Silicon decoder.
 
-For standalone resource files, the catalog reads the fixed header fields and first string-table entry to show the resource class, format/build versions, and chunk count. It does not yet parse or rewrite resource properties.
+For standalone resource files, the catalog parses the fixed header, string/name/import/property/export/buffer/embedded tables, and per-chunk variable records. The inspector exposes table metadata and parsed records. Raw chunk and property bytes can be edited at their existing lengths; recognized Boolean and numeric primitives also have typed editors. Saving recalculates the affected resource checksums. Complex nested values, resource buffer rewriting, and complete resource reserialization are not implemented.
+
+The asset inspector edits UTF-8 text files with JSON and XML validation, converts system-decodable images to PNG/JPEG/TIFF, and previews macOS-supported audio. The JavaScript runner exposes a read-only project file list, text reads, and staged text edits that require an explicit apply action.
 
 ## Source layout
 
