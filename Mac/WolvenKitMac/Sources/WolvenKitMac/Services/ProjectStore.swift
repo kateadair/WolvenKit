@@ -120,8 +120,8 @@ final class ProjectStore: ObservableObject {
         }
 
         let root = project.projectDirectory
-        let fileManager = self.fileManager
         let files = await Task.detached(priority: .utility) {
+            let fileManager = FileManager.default
             guard let enumerator = fileManager.enumerator(
                 at: root,
                 includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey],
@@ -171,13 +171,13 @@ final class ProjectStore: ObservableObject {
             name: name,
             modName: value("ModName")?.nilIfBlank ?? name,
             projectFileURL: url,
-            author: value("Author").nilIfBlank,
-            email: value("Email").nilIfBlank,
-            description: value("Description").nilIfBlank,
-            version: value("Version").nilIfBlank,
+            author: value("Author")?.nilIfBlank,
+            email: value("Email")?.nilIfBlank,
+            description: value("Description")?.nilIfBlank,
+            version: value("Version")?.nilIfBlank,
             openProjectFiles: openFiles,
             modIoId: parsedModIoId,
-            modIoLogo: value("ModIoLogo").nilIfBlank
+            modIoLogo: value("ModIoLogo")?.nilIfBlank
         )
     }
 

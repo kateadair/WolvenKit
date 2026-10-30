@@ -24,19 +24,20 @@ final class WorkspaceViewModel: ObservableObject {
     private var archiveAccessActive = false
 
     init(
-        store: ProjectStore = ProjectStore(),
+        store: ProjectStore? = nil,
         archiveReader: ArchiveIndexReader = ArchiveIndexReader(),
         archivePayloadService: ArchivePayloadService = ArchivePayloadService(),
         archiveBuilderService: ArchiveBuilderService = ArchiveBuilderService(),
         scriptRunnerService: ScriptRunnerService = ScriptRunnerService()
     ) {
-        self.store = store
+        let projectStore = store ?? ProjectStore()
+        self.store = projectStore
         self.archiveReader = archiveReader
         self.archivePayloadService = archivePayloadService
         self.archiveBuilderService = archiveBuilderService
         self.scriptRunnerService = scriptRunnerService
         Task {
-            await store.restoreRecentProjects()
+            await projectStore.restoreRecentProjects()
             synchronizeFromStore()
         }
     }

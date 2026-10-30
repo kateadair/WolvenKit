@@ -78,11 +78,11 @@ struct ArchiveCatalogView: View {
                         Text(entry.displayName)
                             .font(.system(.body, design: .monospaced))
                         Spacer()
-                        Text(entry.fileByteCount, format: .byteCount(style: .file))
+                        Text(entry.fileByteCount.formatted(.byteCount(style: .file)))
                             .font(.caption.monospacedDigit())
                             .foregroundStyle(.secondary)
                     }
-                    .tag(entry.id as UInt64?)
+                    .tag(Optional(entry.id))
                 }
                 .listStyle(.inset)
             }
