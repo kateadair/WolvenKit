@@ -41,7 +41,7 @@ Services are passed into view models through initializers. Long-running indexing
 | Asset intake | Copy selected files into project source folders with collision-safe names | Implemented in the first slice |
 | Asset catalog | Search, filter, sort, and inspect indexed project files | Implemented in the second slice |
 | Archive access | Validate headers and indexes, list hashed entries, export uncompressed segments | Implemented in the third slice |
-| Resource formats | Parse and serialize resource types, validate fields, preserve unknown data | Not started |
+| Resource formats | Parse and serialize resource types, validate fields, preserve unknown data | Header metadata reader implemented; typed decoding not started |
 | Editors | Structured resource editor, graph editor, timeline editor, localization and tweak tools | Not started |
 | Conversion pipeline | Import/export formats, image/audio conversion, batch operations and progress | Not started |
 | Scripting | Isolated script execution, editor integration, diagnostics and permissions | Not started |
