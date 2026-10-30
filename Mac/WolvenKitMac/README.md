@@ -15,6 +15,8 @@ The workspace module creates and opens `.cpmodproj` project files, writes the pr
 
 The archive catalog validates the archive header and index tables, displays entry hashes, segment ranges, sizes, timestamps, and SHA-1 values, and exports entries whose segments are stored without compression. Compressed entry decoding is not part of this build.
 
+For standalone resource files, the catalog reads the fixed header fields and first string-table entry to show the resource class, format/build versions, and chunk count. It does not yet parse or rewrite resource properties.
+
 ## Source layout
 
 ```text
