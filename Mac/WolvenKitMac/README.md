@@ -4,11 +4,17 @@ Native macOS workspace application targeting macOS 14 and Apple Silicon.
 
 ## Build and run
 
-Requirements: macOS 14 or later and Xcode 15 or later.
+Requirements: macOS 14 or later and Xcode 15 or later. The Xcode project produces an arm64 `.app` bundle; open `Mac/WolvenKitMac.xcodeproj` and run the shared `WolvenKitMac` scheme.
 
 ```sh
 cd Mac/WolvenKitMac
 swift run
+```
+
+To build the desktop application bundle from the repository root:
+
+```sh
+xcodebuild -project Mac/WolvenKitMac.xcodeproj -scheme WolvenKitMac -configuration Release -destination 'generic/platform=macOS' ARCHS=arm64 CODE_SIGNING_ALLOWED=NO build
 ```
 
 The workspace module creates and opens `.cpmodproj` project files, writes the project metadata as XML, stores recent project paths in the user's preferences, creates the standard project directory structure, and lists files in the selected project. Project files remain at the user-selected location. Files and folders can be imported into `source/raw`; folder hierarchies are preserved, hidden items and symbolic links are skipped, and collisions receive unique names. The asset catalog supports search, category filters, sorting, and resource header inspection.
