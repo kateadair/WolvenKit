@@ -79,9 +79,13 @@ struct ProjectWorkspaceView: View {
     @ViewBuilder
     private var detailView: some View {
         if let project = viewModel.activeProject {
-            ProjectDetailView(project: project, files: viewModel.projectFiles) {
-                viewModel.refreshFiles()
-            }
+            ProjectDetailView(
+                project: project,
+                files: viewModel.projectFiles,
+                refresh: viewModel.refreshFiles,
+                importFiles: viewModel.importFiles(at:),
+                reportError: { viewModel.errorMessage = $0 }
+            )
         } else {
             ContentUnavailableView {
                 Label("No Project Open", systemImage: "shippingbox")
@@ -103,6 +107,9 @@ private struct ProjectDetailView: View {
     let project: WolvenProject
     let files: [ProjectFile]
     let refresh: () -> Void
+    let importFiles: ([URL]) async -> Void
+    let reportError: (String) -> Void
+    @State private var isImportingFiles = false
 
     private var projectFiles: [ProjectFile] {
         files.filter { $0.url.pathExtension.lowercased() != "cpmodproj" }
@@ -137,6 +144,12 @@ private struct ProjectDetailView: View {
                 Spacer()
                 Text("\(projectFiles.count) files")
                     .foregroundStyle(.secondary)
+                Button {
+                    isImportingFiles = true
+                } label: {
+                    Label("Add Files", systemImage: "plus")
+                }
+                .help("Copy files into the project's raw asset folder")
                 Button(action: refresh) {
                     Label("Refresh", systemImage: "arrow.clockwise")
                 }
@@ -171,6 +184,18 @@ private struct ProjectDetailView: View {
             }
         }
         .navigationTitle(project.name)
+        .fileImporter(isPresented: $isImportingFiles, allowedContentTypes: [.item], allowsMultipleSelection: true) { result in
+            switch result {
+            case .success(let urls):
+                Task {
+                    let accessedURLs = urls.filter { $0.startAccessingSecurityScopedResource() }
+                    defer { accessedURLs.forEach { $0.stopAccessingSecurityScopedResource() } }
+                    await importFiles(urls)
+                }
+            case .failure(let error):
+                reportError(error.localizedDescription)
+            }
+        }
     }
 
     private func icon(for url: URL) -> String {
