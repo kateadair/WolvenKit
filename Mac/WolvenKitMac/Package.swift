@@ -11,6 +11,11 @@ let package = Package(
         .executableTarget(
             name: "WolvenKitMac",
             path: "Sources/WolvenKitMac"
+        ),
+        .testTarget(
+            name: "WolvenKitMacTests",
+            dependencies: ["WolvenKitMac"],
+            path: "Tests/WolvenKitMacTests"
         )
     ]
 )

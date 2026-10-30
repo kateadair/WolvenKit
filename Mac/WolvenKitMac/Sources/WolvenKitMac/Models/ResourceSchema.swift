@@ -189,6 +189,11 @@ enum ResourceValue: Codable, Hashable, Sendable {
 actor ResourceSchemaRegistry {
     private var schemas: [String: ResourceSchema] = [:]
 
+    init(registeringBuiltIns: Bool = true) {
+        let initialSchemas = registeringBuiltIns ? CR2WCoreSchemas.all : []
+        schemas = Dictionary(uniqueKeysWithValues: initialSchemas.map { ($0.id, $0) })
+    }
+
     func register(_ schema: ResourceSchema, replacingExisting: Bool = false) throws {
         try schema.validate()
         guard replacingExisting || schemas[schema.id] == nil else {
@@ -209,6 +214,17 @@ actor ResourceSchemaRegistry {
         return schema
     }
 
+    func schema(serializedTypeName: String) throws -> ResourceSchema {
+        let normalized = serializedTypeName.lowercased()
+        guard let schema = schemas.values.first(where: {
+            let identifier = $0.typeIdentifier.lowercased()
+            return identifier == normalized || identifier.hasSuffix(".\(normalized)")
+        }) else {
+            throw ResourceSchemaError.schemaNotFound(serializedTypeName)
+        }
+        return schema
+    }
+
     func decode(typeIdentifier: String, version: Int, payload: Data) throws -> [String: ResourceValue] {
         try schema(typeIdentifier: typeIdentifier, version: version).decode(payload)
     }
@@ -224,6 +240,119 @@ actor ResourceSchemaRegistry {
         schemas.values.sorted {
             ($0.typeIdentifier, $0.version) < ($1.typeIdentifier, $1.version)
         }
+    }
+}
+
+enum CR2WCoreSchemas {
+    static func recordSize(forTableIndex index: Int) -> Int? {
+        switch index {
+        case 1, 2: return 8
+        case 3, 6: return 16
+        case 4, 5: return 24
+        default: return nil
+        }
+    }
+
+    static let all: [ResourceSchema] = [
+        schema("CR2W.Header", size: 160, fields: headerFields),
+        schema("CR2W.TableDescriptor", size: 12, fields: [
+            uint("offset", 0), uint("itemCount", 4), uint("crc32", 8)
+        ]),
+        schema("CR2W.NameRecord", size: 8, fields: [
+            uint("stringOffset", 0), uint("hash", 4)
+        ]),
+        schema("CR2W.ImportRecord", size: 8, fields: [
+            uint("pathStringOffset", 0), uint16("classNameIndex", 4), uint16("flags", 6)
+        ]),
+        schema("CR2W.PropertyRecord", size: 16, fields: [
+            uint16("classNameIndex", 0), uint16("classFlags", 2),
+            uint16("propertyNameIndex", 4), uint16("propertyFlags", 6),
+            uint64("hash", 8)
+        ]),
+        schema("CR2W.ExportRecord", size: 24, fields: [
+            uint16("classNameIndex", 0), uint16("objectFlags", 2),
+            uint("parentID", 4), uint("dataSize", 8), uint("dataOffset", 12),
+            uint("template", 16), uint("crc32", 20)
+        ]),
+        schema("CR2W.BufferDescriptor", size: 24, fields: [
+            uint("flags", 0), uint("bufferIndex", 4), uint("offset", 8),
+            uint("compressedSize", 12), uint("uncompressedSize", 16), uint("crc32", 20)
+        ]),
+        schema("CR2W.EmbeddedRecord", size: 16, fields: [
+            uint("importIndex", 0), uint("chunkIndex", 4), uint64("pathHash", 8)
+        ]),
+        schema("CR2W.VariableHeader", size: 8, fields: [
+            uint16("propertyNameIndex", 0), uint16("typeNameIndex", 2), uint("encodedSize", 4)
+        ]),
+        scalar("RED4.Bool", storage: .boolean, width: 1),
+        scalar("RED4.Int8", storage: .signedInteger, width: 1),
+        scalar("RED4.Uint8", storage: .unsignedInteger, width: 1),
+        scalar("RED4.Int16", storage: .signedInteger, width: 2),
+        scalar("RED4.Uint16", storage: .unsignedInteger, width: 2),
+        scalar("RED4.Int32", storage: .signedInteger, width: 4),
+        scalar("RED4.Uint32", storage: .unsignedInteger, width: 4),
+        scalar("RED4.Int64", storage: .signedInteger, width: 8),
+        scalar("RED4.Uint64", storage: .unsignedInteger, width: 8),
+        scalar("RED4.Float", storage: .float32, width: 4),
+        scalar("RED4.Double", storage: .float64, width: 8),
+        vector("RED4.Vector2", components: ["x", "y"]),
+        vector("RED4.Vector3", components: ["x", "y", "z"]),
+        vector("RED4.Vector4", components: ["x", "y", "z", "w"]),
+        vector("RED4.EulerAngles", components: ["roll", "pitch", "yaw"]),
+        vector("RED4.Quaternion", components: ["i", "j", "k", "r"]),
+        schema("RED4.Color", size: 4, fields: [
+            byte("red", 0), byte("green", 1), byte("blue", 2), byte("alpha", 3)
+        ])
+    ]
+
+    private static var headerFields: [ResourceFieldSchema] {
+        var fields = [
+            uint("magic", 0), uint("version", 4), uint("flags", 8),
+            uint64("timestamp", 12), uint("buildVersion", 20),
+            uint("objectDataEnd", 24), uint("bufferDataEnd", 28),
+            uint("checksum", 32), uint("chunkCount", 36)
+        ]
+        for index in 0..<10 {
+            let offset = 40 + index * 12
+            fields.append(uint("table\(index).offset", offset))
+            fields.append(uint("table\(index).itemCount", offset + 4))
+            fields.append(uint("table\(index).crc32", offset + 8))
+        }
+        return fields
+    }
+
+    private static func scalar(_ identifier: String,
+                               storage: ResourceFieldStorage,
+                               width: Int) -> ResourceSchema {
+        schema(identifier, size: width, fields: [
+            ResourceFieldSchema(name: "value", offset: 0, width: width, storage: storage)
+        ])
+    }
+
+    private static func vector(_ identifier: String, components: [String]) -> ResourceSchema {
+        schema(identifier, size: components.count * 4, fields: components.enumerated().map { index, name in
+            ResourceFieldSchema(name: name, offset: index * 4, width: 4, storage: .float32)
+        })
+    }
+
+    private static func uint(_ name: String, _ offset: Int) -> ResourceFieldSchema {
+        ResourceFieldSchema(name: name, offset: offset, width: 4, storage: .unsignedInteger)
+    }
+
+    private static func uint16(_ name: String, _ offset: Int) -> ResourceFieldSchema {
+        ResourceFieldSchema(name: name, offset: offset, width: 2, storage: .unsignedInteger)
+    }
+
+    private static func uint64(_ name: String, _ offset: Int) -> ResourceFieldSchema {
+        ResourceFieldSchema(name: name, offset: offset, width: 8, storage: .unsignedInteger)
+    }
+
+    private static func byte(_ name: String, _ offset: Int) -> ResourceFieldSchema {
+        ResourceFieldSchema(name: name, offset: offset, width: 1, storage: .unsignedInteger)
+    }
+
+    private static func schema(_ identifier: String, size: Int, fields: [ResourceFieldSchema]) -> ResourceSchema {
+        ResourceSchema(typeIdentifier: identifier, version: 1, byteCount: size, fields: fields)
     }
 }
 
