@@ -133,11 +133,11 @@ final class ProjectStore: ObservableObject {
             var results: [ProjectFile] = []
             for case let url as URL in enumerator {
                 if url.pathComponents.contains("_backups") { continue }
-                guard let values = try? url.resourceValues(forKeys: [.isRegularFileKey]), values.isRegularFile == true else {
+                guard let values = try? url.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey]), values.isRegularFile == true else {
                     continue
                 }
                 let relative = String(url.path.dropFirst(root.path.count + 1))
-                results.append(ProjectFile(url: url, relativePath: relative))
+                results.append(ProjectFile(url: url, relativePath: relative, byteCount: Int64(values.fileSize ?? 0)))
             }
             return results.sorted { $0.relativePath.localizedStandardCompare($1.relativePath) == .orderedAscending }
         }.value
