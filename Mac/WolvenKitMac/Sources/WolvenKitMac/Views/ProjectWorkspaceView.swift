@@ -162,25 +162,7 @@ private struct ProjectDetailView: View {
             if projectFiles.isEmpty {
                 ContentUnavailableView("No Project Files", systemImage: "doc", description: Text("Place source assets in this project to see them here."))
             } else {
-                List(projectFiles) { file in
-                    Link(destination: file.url) {
-                        HStack(spacing: 12) {
-                            Image(systemName: icon(for: file.url))
-                                .frame(width: 22)
-                                .foregroundStyle(.secondary)
-                            Text(file.relativePath)
-                                .lineLimit(1)
-                                .truncationMode(.middle)
-                            Spacer()
-                            Text(file.byteCount, format: .byteCount(style: .file))
-                                .font(.caption.monospacedDigit())
-                                .foregroundStyle(.secondary)
-                        }
-                        .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-                }
-                .listStyle(.inset)
+                AssetCatalogView(files: projectFiles)
             }
         }
         .navigationTitle(project.name)
@@ -198,12 +180,4 @@ private struct ProjectDetailView: View {
         }
     }
 
-    private func icon(for url: URL) -> String {
-        switch url.pathExtension.lowercased() {
-        case "png", "jpg", "jpeg", "tiff", "webp": "photo"
-        case "json", "yaml", "yml", "xml": "curlybraces"
-        case "wem", "ogg", "wav": "waveform"
-        default: "doc"
-        }
-    }
 }
