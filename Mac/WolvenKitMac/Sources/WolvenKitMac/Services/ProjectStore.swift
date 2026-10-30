@@ -103,6 +103,16 @@ final class ProjectStore: ObservableObject {
         try writeProject(project)
     }
 
+    func importFiles(at sourceURLs: [URL]) async throws -> Int {
+        guard let project = activeProject else { return 0 }
+        let destination = project.rawDirectory
+        let importedCount = try await Task.detached(priority: .userInitiated) {
+            try Self.copyFiles(sourceURLs, into: destination)
+        }.value
+        await reloadProjectFiles()
+        return importedCount
+    }
+
     func reloadProjectFiles() async {
         guard let project = activeProject else {
             projectFiles = []
@@ -214,6 +224,63 @@ final class ProjectStore: ObservableObject {
         guard !name.isEmpty, name != ".", name != ".." else { return false }
         return name.unicodeScalars.allSatisfy { scalar in
             !CharacterSet.controlCharacters.contains(scalar) && scalar != "/" && scalar != ":"
+        }
+    }
+
+    private nonisolated static func copyFiles(_ sourceURLs: [URL], into destination: URL) throws -> Int {
+        guard !sourceURLs.isEmpty else { return 0 }
+
+        let fileManager = FileManager.default
+        try fileManager.createDirectory(at: destination, withIntermediateDirectories: true)
+
+        let staging = destination.appendingPathComponent(".incoming-\(UUID().uuidString)", isDirectory: true)
+        try fileManager.createDirectory(at: staging, withIntermediateDirectories: false)
+
+        var stagedFiles: [(temporary: URL, name: String)] = []
+        var installedFiles: [URL] = []
+
+        do {
+            for source in sourceURLs {
+                let values = try source.resourceValues(forKeys: [.isRegularFileKey])
+                guard values.isRegularFile == true else { continue }
+                let name = source.lastPathComponent
+                guard !name.isEmpty, name != ".", name != ".." else { continue }
+                let temporary = staging.appendingPathComponent(UUID().uuidString)
+                try fileManager.copyItem(at: source, to: temporary)
+                stagedFiles.append((temporary, name))
+            }
+
+            for staged in stagedFiles {
+                let target = uniqueDestination(for: staged.name, in: destination, fileManager: fileManager)
+                try fileManager.moveItem(at: staged.temporary, to: target)
+                installedFiles.append(target)
+            }
+
+            try fileManager.removeItem(at: staging)
+            return installedFiles.count
+        } catch {
+            for url in installedFiles {
+                try? fileManager.removeItem(at: url)
+            }
+            try? fileManager.removeItem(at: staging)
+            throw error
+        }
+    }
+
+    private nonisolated static func uniqueDestination(for name: String, in directory: URL, fileManager: FileManager) -> URL {
+        let original = URL(fileURLWithPath: name)
+        let baseName = original.deletingPathExtension().lastPathComponent
+        let ext = original.pathExtension
+        var index = 1
+
+        while true {
+            let suffix = index == 1 ? "" : " \(index)"
+            let candidateName = ext.isEmpty ? "\(baseName)\(suffix)" : "\(baseName)\(suffix).\(ext)"
+            let candidate = directory.appendingPathComponent(candidateName)
+            if !fileManager.fileExists(atPath: candidate.path) {
+                return candidate
+            }
+            index += 1
         }
     }
 }
