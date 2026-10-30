@@ -236,28 +236,41 @@ final class ProjectStore: ObservableObject {
         let staging = destination.appendingPathComponent(".incoming-\(UUID().uuidString)", isDirectory: true)
         try fileManager.createDirectory(at: staging, withIntermediateDirectories: false)
 
-        var stagedFiles: [(temporary: URL, name: String)] = []
+        var stagedItems: [(temporary: URL, name: String, fileCount: Int)] = []
         var installedFiles: [URL] = []
 
         do {
             for source in sourceURLs {
-                let values = try source.resourceValues(forKeys: [.isRegularFileKey])
-                guard values.isRegularFile == true else { continue }
+                let values = try source.resourceValues(forKeys: [.isRegularFileKey, .isDirectoryKey, .isSymbolicLinkKey])
+                guard values.isSymbolicLink != true,
+                      values.isRegularFile == true || values.isDirectory == true else { continue }
                 let name = source.lastPathComponent
                 guard !name.isEmpty, name != ".", name != ".." else { continue }
                 let temporary = staging.appendingPathComponent(UUID().uuidString)
-                try fileManager.copyItem(at: source, to: temporary)
-                stagedFiles.append((temporary, name))
+                if values.isDirectory == true {
+                    try fileManager.createDirectory(at: temporary, withIntermediateDirectories: false)
+                    let count = try copyDirectoryContents(from: source, to: temporary, fileManager: fileManager)
+                    guard count > 0 else {
+                        try fileManager.removeItem(at: temporary)
+                        continue
+                    }
+                    stagedItems.append((temporary, name, count))
+                } else {
+                    try fileManager.copyItem(at: source, to: temporary)
+                    stagedItems.append((temporary, name, 1))
+                }
             }
 
-            for staged in stagedFiles {
+            var importedFileCount = 0
+            for staged in stagedItems {
                 let target = uniqueDestination(for: staged.name, in: destination, fileManager: fileManager)
                 try fileManager.moveItem(at: staged.temporary, to: target)
                 installedFiles.append(target)
+                importedFileCount += staged.fileCount
             }
 
             try fileManager.removeItem(at: staging)
-            return installedFiles.count
+            return importedFileCount
         } catch {
             for url in installedFiles {
                 try? fileManager.removeItem(at: url)
@@ -265,6 +278,40 @@ final class ProjectStore: ObservableObject {
             try? fileManager.removeItem(at: staging)
             throw error
         }
+    }
+
+    private nonisolated static func copyDirectoryContents(from source: URL, to destination: URL, fileManager: FileManager) throws -> Int {
+        guard let enumerator = fileManager.enumerator(
+            at: source,
+            includingPropertiesForKeys: [.isRegularFileKey, .isDirectoryKey, .isSymbolicLinkKey],
+            options: [.skipsHiddenFiles, .skipsPackageDescendants]
+        ) else {
+            return 0
+        }
+
+        var copiedFileCount = 0
+        for case let sourceURL as URL in enumerator {
+            let values = try sourceURL.resourceValues(forKeys: [.isRegularFileKey, .isDirectoryKey, .isSymbolicLinkKey])
+            if values.isSymbolicLink == true {
+                enumerator.skipDescendants()
+                continue
+            }
+
+            let relativePath = String(sourceURL.path.dropFirst(source.path.count + 1))
+            guard !relativePath.isEmpty else { continue }
+            let targetURL = destination.appendingPathComponent(relativePath)
+
+            if values.isDirectory == true {
+                try fileManager.createDirectory(at: targetURL, withIntermediateDirectories: true)
+            } else if values.isRegularFile == true {
+                try fileManager.createDirectory(at: targetURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+                try fileManager.copyItem(at: sourceURL, to: targetURL)
+                copiedFileCount += 1
+            } else {
+                enumerator.skipDescendants()
+            }
+        }
+        return copiedFileCount
     }
 
     private nonisolated static func uniqueDestination(for name: String, in directory: URL, fileManager: FileManager) -> URL {
