@@ -75,8 +75,6 @@
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-		F10000000000000000000001 /* Project configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000005 /* Debug */, F10000000000000000000006 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
-		F10000000000000000000002 /* Target configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000007 /* Debug */, F10000000000000000000008 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		F10000000000000000000005 /* Debug project */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Debug; };
 		F10000000000000000000006 /* Release project */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Release; };
 		F10000000000000000000007 /* Debug target */ = {isa = XCBuildConfiguration; buildSettings = {ARCHS = arm64; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WolvenKit/Resources/Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.wolvenkit.mac; PRODUCT_NAME = WolvenKitMac; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; }; name = Debug; };
@@ -84,6 +82,8 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F10000000000000000000001 /* Project configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000005 /* Debug */, F10000000000000000000006 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		F10000000000000000000002 /* Target configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000007 /* Debug */, F10000000000000000000008 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
 
 	};
