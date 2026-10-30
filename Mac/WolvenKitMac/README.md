@@ -11,7 +11,9 @@ cd Mac/WolvenKitMac
 swift run
 ```
 
-The workspace module creates and opens `.cpmodproj` project files, writes the project metadata as XML, stores recent project paths in the user's preferences, creates the standard project directory structure, and lists files in the selected project. Project files remain at the user-selected location.
+The workspace module creates and opens `.cpmodproj` project files, writes the project metadata as XML, stores recent project paths in the user's preferences, creates the standard project directory structure, and lists files in the selected project. Project files remain at the user-selected location. Assets can be copied into `source/raw` and searched, filtered, sorted, and inspected in the asset catalog.
+
+The archive catalog validates the archive header and index tables, displays entry hashes, segment ranges, sizes, timestamps, and SHA-1 values, and exports entries whose segments are stored without compression. Compressed entry decoding is not part of this build.
 
 ## Source layout
 
