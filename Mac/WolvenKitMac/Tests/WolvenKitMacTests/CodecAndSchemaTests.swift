@@ -20,7 +20,8 @@ final class KrakenDecoderTests: XCTestCase {
         frame.append(contentsOf: [0x0C, 0x06, 0x00, 0x00, 0x00, 0x00])
 
         XCTAssertThrowsError(try KrakenDecoder().decode(frame)) { error in
-            guard case KrakenDecodingError.unsupportedEntropyBlock = error else {
+            guard let decodingError = error as? KrakenDecodingError,
+                  case .unsupportedEntropyBlock = decodingError else {
                 return XCTFail("Expected an explicit unsupported entropy block error, got \(error).")
             }
         }
@@ -31,7 +32,8 @@ final class KrakenDecoderTests: XCTestCase {
         let decoder = KrakenDecoder(limits: .init(maximumOutputSize: 32, maximumInputSize: 64))
 
         XCTAssertThrowsError(try decoder.decode(frame)) { error in
-            guard case KrakenDecodingError.outputLimitExceeded = error else {
+            guard let decodingError = error as? KrakenDecodingError,
+                  case .outputLimitExceeded = decodingError else {
                 return XCTFail("Expected the configured output limit error, got \(error).")
             }
         }
