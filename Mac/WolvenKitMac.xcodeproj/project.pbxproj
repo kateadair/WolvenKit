@@ -1,0 +1,123 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* WolvenKitMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000001 /* WolvenKitMacApp.swift */; };
+		A10000000000000000000002 /* ArchiveCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* ArchiveCatalog.swift */; };
+		A10000000000000000000003 /* CR2WMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* CR2WMetadata.swift */; };
+		A10000000000000000000004 /* WolvenProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000004 /* WolvenProject.swift */; };
+		A10000000000000000000005 /* ArchiveIndexReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000005 /* ArchiveIndexReader.swift */; };
+		A10000000000000000000006 /* ArchivePayloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000006 /* ArchivePayloadService.swift */; };
+		A10000000000000000000007 /* CR2WMetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000007 /* CR2WMetadataReader.swift */; };
+		A10000000000000000000008 /* ProjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000008 /* ProjectStore.swift */; };
+		A10000000000000000000009 /* ArchiveCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000009 /* ArchiveCatalogViewModel.swift */; };
+		A1000000000000000000000A /* AssetCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000A /* AssetCatalogViewModel.swift */; };
+		A1000000000000000000000B /* WorkspaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000B /* WorkspaceViewModel.swift */; };
+		A1000000000000000000000C /* ArchiveCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000C /* ArchiveCatalogView.swift */; };
+		A1000000000000000000000D /* AssetCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* AssetCatalogView.swift */; };
+		A1000000000000000000000E /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000E /* NewProjectView.swift */; };
+		A1000000000000000000000F /* ProjectWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000F /* ProjectWorkspaceView.swift */; };
+		A10000000000000000000010 /* ArchiveBuilderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000012 /* ArchiveBuilderService.swift */; };
+		A10000000000000000000011 /* CR2WDocumentReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000013 /* CR2WDocumentReader.swift */; };
+		A10000000000000000000012 /* CR2WEditingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000014 /* CR2WEditingService.swift */; };
+		A10000000000000000000013 /* CR2WDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000015 /* CR2WDocument.swift */; };
+		A10000000000000000000014 /* ArchiveBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000016 /* ArchiveBuilderView.swift */; };
+		A10000000000000000000015 /* HexPayloadEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000017 /* HexPayloadEditorView.swift */; };
+		A10000000000000000000016 /* TextAssetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000018 /* TextAssetService.swift */; };
+		A10000000000000000000017 /* ImageConversionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000019 /* ImageConversionService.swift */; };
+		A10000000000000000000018 /* ScriptRunnerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001A /* ScriptRunnerService.swift */; };
+		A10000000000000000000019 /* ScriptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001B /* ScriptModels.swift */; };
+		A1000000000000000000001A /* TextAssetEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001C /* TextAssetEditorView.swift */; };
+		A1000000000000000000001B /* ScriptRunnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001D /* ScriptRunnerView.swift */; };
+		A1000000000000000000001C /* AudioPreviewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001E /* AudioPreviewControl.swift */; };
+		A1000000000000000000001D /* KrakenDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001F /* KrakenDecoder.swift */; };
+		A1000000000000000000001E /* ResourceSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000020 /* ResourceSchema.swift */; };
+		A1000000000000000000001F /* CR2WResourceSerializationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000021 /* CR2WResourceSerializationService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B10000000000000000000001 /* WolvenKitMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolvenKitMacApp.swift; sourceTree = "<group>"; };
+		B10000000000000000000002 /* ArchiveCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCatalog.swift; sourceTree = "<group>"; };
+		B10000000000000000000003 /* CR2WMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WMetadata.swift; sourceTree = "<group>"; };
+		B10000000000000000000004 /* WolvenProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolvenProject.swift; sourceTree = "<group>"; };
+		B10000000000000000000005 /* ArchiveIndexReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveIndexReader.swift; sourceTree = "<group>"; };
+		B10000000000000000000006 /* ArchivePayloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePayloadService.swift; sourceTree = "<group>"; };
+		B10000000000000000000007 /* CR2WMetadataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WMetadataReader.swift; sourceTree = "<group>"; };
+		B10000000000000000000008 /* ProjectStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStore.swift; sourceTree = "<group>"; };
+		B10000000000000000000009 /* ArchiveCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCatalogViewModel.swift; sourceTree = "<group>"; };
+		B1000000000000000000000A /* AssetCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCatalogViewModel.swift; sourceTree = "<group>"; };
+		B1000000000000000000000B /* WorkspaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceViewModel.swift; sourceTree = "<group>"; };
+		B1000000000000000000000C /* ArchiveCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCatalogView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000D /* AssetCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCatalogView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000E /* NewProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000F /* ProjectWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWorkspaceView.swift; sourceTree = "<group>"; };
+		B10000000000000000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10000000000000000000011 /* WolvenKitMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolvenKitMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000012 /* ArchiveBuilderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBuilderService.swift; sourceTree = "<group>"; };
+		B10000000000000000000013 /* CR2WDocumentReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WDocumentReader.swift; sourceTree = "<group>"; };
+		B10000000000000000000014 /* CR2WEditingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WEditingService.swift; sourceTree = "<group>"; };
+		B10000000000000000000015 /* CR2WDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WDocument.swift; sourceTree = "<group>"; };
+		B10000000000000000000016 /* ArchiveBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBuilderView.swift; sourceTree = "<group>"; };
+		B10000000000000000000017 /* HexPayloadEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPayloadEditorView.swift; sourceTree = "<group>"; };
+		B10000000000000000000018 /* TextAssetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAssetService.swift; sourceTree = "<group>"; };
+		B10000000000000000000019 /* ImageConversionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConversionService.swift; sourceTree = "<group>"; };
+		B1000000000000000000001A /* ScriptRunnerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptRunnerService.swift; sourceTree = "<group>"; };
+		B1000000000000000000001B /* ScriptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptModels.swift; sourceTree = "<group>"; };
+		B1000000000000000000001C /* TextAssetEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAssetEditorView.swift; sourceTree = "<group>"; };
+		B1000000000000000000001D /* ScriptRunnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptRunnerView.swift; sourceTree = "<group>"; };
+		B1000000000000000000001E /* AudioPreviewControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPreviewControl.swift; sourceTree = "<group>"; };
+		B1000000000000000000001F /* KrakenDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrakenDecoder.swift; sourceTree = "<group>"; };
+		B10000000000000000000020 /* ResourceSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceSchema.swift; sourceTree = "<group>"; };
+		B10000000000000000000021 /* CR2WResourceSerializationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WResourceSerializationService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10000000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000004, A10000000000000000000005, A10000000000000000000006, A10000000000000000000007, A10000000000000000000008, A10000000000000000000009, A1000000000000000000000A, A1000000000000000000000B, A1000000000000000000000C, A1000000000000000000000D, A1000000000000000000000E, A1000000000000000000000F, A10000000000000000000010, A10000000000000000000011, A10000000000000000000012, A10000000000000000000013, A10000000000000000000014, A10000000000000000000015, A10000000000000000000016, A10000000000000000000017, A10000000000000000000018, A10000000000000000000019, A1000000000000000000001A, A1000000000000000000001B, A1000000000000000000001C, A1000000000000000000001D, A1000000000000000000001E, A1000000000000000000001F, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXGroup section */
+		D10000000000000000000001 = {isa = PBXGroup; children = (D10000000000000000000002 /* Sources */, D10000000000000000000003 /* Resources */, B10000000000000000000011 /* WolvenKitMac.app */, ); sourceTree = "<group>"; };
+		D10000000000000000000002 /* Sources */ = {isa = PBXGroup; path = WolvenKitMac/Sources/WolvenKitMac; sourceTree = "<group>"; children = (D10000000000000000000004 /* App */, D10000000000000000000005 /* Models */, D10000000000000000000006 /* Services */, D10000000000000000000007 /* ViewModels */, D10000000000000000000008 /* Views */, ); };
+		D10000000000000000000003 /* Resources */ = {isa = PBXGroup; path = WolvenKit/Resources; sourceTree = "<group>"; children = (B10000000000000000000010 /* Info.plist */, ); };
+		D10000000000000000000004 /* App */ = {isa = PBXGroup; path = App; sourceTree = "<group>"; children = (B10000000000000000000001 /* WolvenKitMacApp.swift */, ); };
+		D10000000000000000000005 /* Models */ = {isa = PBXGroup; path = Models; sourceTree = "<group>"; children = (B10000000000000000000002 /* ArchiveCatalog.swift */, B10000000000000000000003 /* CR2WMetadata.swift */, B10000000000000000000004 /* WolvenProject.swift */, B10000000000000000000015 /* CR2WDocument.swift */, B1000000000000000000001B /* ScriptModels.swift */, B10000000000000000000020 /* ResourceSchema.swift */, ); };
+		D10000000000000000000006 /* Services */ = {isa = PBXGroup; path = Services; sourceTree = "<group>"; children = (B10000000000000000000005 /* ArchiveIndexReader.swift */, B10000000000000000000006 /* ArchivePayloadService.swift */, B10000000000000000000007 /* CR2WMetadataReader.swift */, B10000000000000000000008 /* ProjectStore.swift */, B10000000000000000000012 /* ArchiveBuilderService.swift */, B10000000000000000000013 /* CR2WDocumentReader.swift */, B10000000000000000000014 /* CR2WEditingService.swift */, B10000000000000000000018 /* TextAssetService.swift */, B10000000000000000000019 /* ImageConversionService.swift */, B1000000000000000000001A /* ScriptRunnerService.swift */, B1000000000000000000001F /* KrakenDecoder.swift */, B10000000000000000000021 /* CR2WResourceSerializationService.swift */, ); };
+		D10000000000000000000007 /* ViewModels */ = {isa = PBXGroup; path = ViewModels; sourceTree = "<group>"; children = (B10000000000000000000009 /* ArchiveCatalogViewModel.swift */, B1000000000000000000000A /* AssetCatalogViewModel.swift */, B1000000000000000000000B /* WorkspaceViewModel.swift */, ); };
+		D10000000000000000000008 /* Views */ = {isa = PBXGroup; path = Views; sourceTree = "<group>"; children = (B1000000000000000000000C /* ArchiveCatalogView.swift */, B1000000000000000000000D /* AssetCatalogView.swift */, B1000000000000000000000E /* NewProjectView.swift */, B1000000000000000000000F /* ProjectWorkspaceView.swift */, B10000000000000000000016 /* ArchiveBuilderView.swift */, B10000000000000000000017 /* HexPayloadEditorView.swift */, B1000000000000000000001C /* TextAssetEditorView.swift */, B1000000000000000000001D /* ScriptRunnerView.swift */, B1000000000000000000001E /* AudioPreviewControl.swift */, ); };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E10000000000000000000001 /* WolvenKitMac */ = {isa = PBXNativeTarget; buildConfigurationList = F10000000000000000000002 /* Build configuration list for PBXNativeTarget "WolvenKitMac" */; buildPhases = (C10000000000000000000002 /* Sources */, C10000000000000000000001 /* Frameworks */, C10000000000000000000003 /* Resources */, ); buildRules = (); dependencies = (); name = WolvenKitMac; productName = WolvenKitMac; productReference = B10000000000000000000011 /* WolvenKitMac.app */; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E10000000000000000000002 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1600; TargetAttributes = {E10000000000000000000001 = {CreatedOnToolsVersion = 16.0; }; }; }; buildConfigurationList = F10000000000000000000001 /* Build configuration list for PBXProject "WolvenKitMac" */; compatibilityVersion = "Xcode 15.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base, ); mainGroup = D10000000000000000000001; productRefGroup = D10000000000000000000001; projectDirPath = ""; projectRoot = ""; targets = (E10000000000000000000001 /* WolvenKitMac */, ); };
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		F10000000000000000000005 /* Debug project */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Debug; };
+		F10000000000000000000006 /* Release project */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Release; };
+		F10000000000000000000007 /* Debug target */ = {isa = XCBuildConfiguration; buildSettings = {ARCHS = "arm64 x86_64"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WolvenKit/Resources/Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.wolvenkit.mac; PRODUCT_NAME = WolvenKitMac; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; }; name = Debug; };
+		F10000000000000000000008 /* Release target */ = {isa = XCBuildConfiguration; buildSettings = {ARCHS = "arm64 x86_64"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WolvenKit/Resources/Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.wolvenkit.mac; PRODUCT_NAME = WolvenKitMac; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F10000000000000000000001 /* Project configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000005 /* Debug */, F10000000000000000000006 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		F10000000000000000000002 /* Target configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000007 /* Debug */, F10000000000000000000008 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+
+	};
+	rootObject = E10000000000000000000002 /* Project object */;
+}
