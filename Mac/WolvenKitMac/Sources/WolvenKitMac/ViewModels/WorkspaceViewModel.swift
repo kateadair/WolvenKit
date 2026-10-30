@@ -75,6 +75,18 @@ final class WorkspaceViewModel: ObservableObject {
         }
     }
 
+    func importFiles(at urls: [URL]) async {
+        isBusy = true
+        defer { isBusy = false }
+        do {
+            _ = try await store.importFiles(at: urls)
+            synchronizeFromStore()
+            errorMessage = nil
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
     private func synchronizeFromStore() {
         projects = store.projects
         activeProject = store.activeProject
