@@ -16,6 +16,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: wolvenkit-macos-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: macos-14
