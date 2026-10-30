@@ -40,7 +40,7 @@ Services are passed into view models through initializers. Long-running indexing
 | Project workspace | Create/open project, preserve metadata, recents, project file listing | Implemented in the first slice |
 | Asset intake | Copy selected files into project source folders with collision-safe names | Implemented in the first slice |
 | Asset catalog | Search, filter, sort, and inspect indexed project files | Implemented in the second slice |
-| Archive access | Enumerate archive records, resolve paths and hashes, read entry payloads | Not started |
+| Archive access | Validate headers and indexes, list hashed entries, export uncompressed segments | Implemented in the third slice |
 | Resource formats | Parse and serialize resource types, validate fields, preserve unknown data | Not started |
 | Editors | Structured resource editor, graph editor, timeline editor, localization and tweak tools | Not started |
 | Conversion pipeline | Import/export formats, image/audio conversion, batch operations and progress | Not started |
@@ -51,8 +51,8 @@ Services are passed into view models through initializers. Long-running indexing
 
 1. Establish the project workspace and its persistence contract.
 2. Add asset intake and a searchable project asset catalog.
-3. Define archive-entry and resource model contracts before implementing archive readers.
-4. Port archive reading, path/hash lookup, compression, and resource serialization as independent services.
+3. Add archive path/hash dictionaries and Oodle-compatible arm64 decompression and compression.
+4. Port resource parsing and serialization as independent services on the archive index contract.
 5. Build editors on the validated model and service APIs.
 6. Add conversion, scripting, settings, diagnostics, packaging, and end-to-end compatibility checks.
 
