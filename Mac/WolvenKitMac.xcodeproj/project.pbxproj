@@ -1,0 +1,91 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* WolvenKitMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000001 /* WolvenKitMacApp.swift */; };
+		A10000000000000000000002 /* ArchiveCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* ArchiveCatalog.swift */; };
+		A10000000000000000000003 /* CR2WMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* CR2WMetadata.swift */; };
+		A10000000000000000000004 /* WolvenProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000004 /* WolvenProject.swift */; };
+		A10000000000000000000005 /* ArchiveIndexReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000005 /* ArchiveIndexReader.swift */; };
+		A10000000000000000000006 /* ArchivePayloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000006 /* ArchivePayloadService.swift */; };
+		A10000000000000000000007 /* CR2WMetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000007 /* CR2WMetadataReader.swift */; };
+		A10000000000000000000008 /* ProjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000008 /* ProjectStore.swift */; };
+		A10000000000000000000009 /* ArchiveCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000009 /* ArchiveCatalogViewModel.swift */; };
+		A1000000000000000000000A /* AssetCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000A /* AssetCatalogViewModel.swift */; };
+		A1000000000000000000000B /* WorkspaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000B /* WorkspaceViewModel.swift */; };
+		A1000000000000000000000C /* ArchiveCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000C /* ArchiveCatalogView.swift */; };
+		A1000000000000000000000D /* AssetCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* AssetCatalogView.swift */; };
+		A1000000000000000000000E /* NewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000E /* NewProjectView.swift */; };
+		A1000000000000000000000F /* ProjectWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000F /* ProjectWorkspaceView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B10000000000000000000001 /* WolvenKitMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolvenKitMacApp.swift; sourceTree = "<group>"; };
+		B10000000000000000000002 /* ArchiveCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCatalog.swift; sourceTree = "<group>"; };
+		B10000000000000000000003 /* CR2WMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WMetadata.swift; sourceTree = "<group>"; };
+		B10000000000000000000004 /* WolvenProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolvenProject.swift; sourceTree = "<group>"; };
+		B10000000000000000000005 /* ArchiveIndexReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveIndexReader.swift; sourceTree = "<group>"; };
+		B10000000000000000000006 /* ArchivePayloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePayloadService.swift; sourceTree = "<group>"; };
+		B10000000000000000000007 /* CR2WMetadataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CR2WMetadataReader.swift; sourceTree = "<group>"; };
+		B10000000000000000000008 /* ProjectStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStore.swift; sourceTree = "<group>"; };
+		B10000000000000000000009 /* ArchiveCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCatalogViewModel.swift; sourceTree = "<group>"; };
+		B1000000000000000000000A /* AssetCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCatalogViewModel.swift; sourceTree = "<group>"; };
+		B1000000000000000000000B /* WorkspaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceViewModel.swift; sourceTree = "<group>"; };
+		B1000000000000000000000C /* ArchiveCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCatalogView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000D /* AssetCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCatalogView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000E /* NewProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000F /* ProjectWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWorkspaceView.swift; sourceTree = "<group>"; };
+		B10000000000000000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10000000000000000000011 /* WolvenKitMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolvenKitMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10000000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001, A10000000000000000000002, A10000000000000000000003, A10000000000000000000004, A10000000000000000000005, A10000000000000000000006, A10000000000000000000007, A10000000000000000000008, A10000000000000000000009, A1000000000000000000000A, A1000000000000000000000B, A1000000000000000000000C, A1000000000000000000000D, A1000000000000000000000E, A1000000000000000000000F, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXGroup section */
+		D10000000000000000000001 = {isa = PBXGroup; children = (D10000000000000000000002 /* Sources */, D10000000000000000000003 /* Resources */, B10000000000000000000011 /* WolvenKitMac.app */, ); sourceTree = "<group>"; };
+		D10000000000000000000002 /* Sources */ = {isa = PBXGroup; path = WolvenKitMac/Sources/WolvenKitMac; sourceTree = "<group>"; children = (D10000000000000000000004 /* App */, D10000000000000000000005 /* Models */, D10000000000000000000006 /* Services */, D10000000000000000000007 /* ViewModels */, D10000000000000000000008 /* Views */, ); };
+		D10000000000000000000003 /* Resources */ = {isa = PBXGroup; path = WolvenKitMac/Resources; sourceTree = "<group>"; children = (B10000000000000000000010 /* Info.plist */, ); };
+		D10000000000000000000004 /* App */ = {isa = PBXGroup; path = App; sourceTree = "<group>"; children = (B10000000000000000000001 /* WolvenKitMacApp.swift */, ); };
+		D10000000000000000000005 /* Models */ = {isa = PBXGroup; path = Models; sourceTree = "<group>"; children = (B10000000000000000000002 /* ArchiveCatalog.swift */, B10000000000000000000003 /* CR2WMetadata.swift */, B10000000000000000000004 /* WolvenProject.swift */, ); };
+		D10000000000000000000006 /* Services */ = {isa = PBXGroup; path = Services; sourceTree = "<group>"; children = (B10000000000000000000005 /* ArchiveIndexReader.swift */, B10000000000000000000006 /* ArchivePayloadService.swift */, B10000000000000000000007 /* CR2WMetadataReader.swift */, B10000000000000000000008 /* ProjectStore.swift */, ); };
+		D10000000000000000000007 /* ViewModels */ = {isa = PBXGroup; path = ViewModels; sourceTree = "<group>"; children = (B10000000000000000000009 /* ArchiveCatalogViewModel.swift */, B1000000000000000000000A /* AssetCatalogViewModel.swift */, B1000000000000000000000B /* WorkspaceViewModel.swift */, ); };
+		D10000000000000000000008 /* Views */ = {isa = PBXGroup; path = Views; sourceTree = "<group>"; children = (B1000000000000000000000C /* ArchiveCatalogView.swift */, B1000000000000000000000D /* AssetCatalogView.swift */, B1000000000000000000000E /* NewProjectView.swift */, B1000000000000000000000F /* ProjectWorkspaceView.swift */, ); };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E10000000000000000000001 /* WolvenKitMac */ = {isa = PBXNativeTarget; buildConfigurationList = F10000000000000000000002 /* Build configuration list for PBXNativeTarget "WolvenKitMac" */; buildPhases = (C10000000000000000000002 /* Sources */, C10000000000000000000001 /* Frameworks */, C10000000000000000000003 /* Resources */, ); buildRules = (); dependencies = (); name = WolvenKitMac; productName = WolvenKitMac; productReference = B10000000000000000000011 /* WolvenKitMac.app */; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E10000000000000000000002 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1600; TargetAttributes = {E10000000000000000000001 = {CreatedOnToolsVersion = 16.0; }; }; }; buildConfigurationList = F10000000000000000000001 /* Build configuration list for PBXProject "WolvenKitMac" */; compatibilityVersion = "Xcode 15.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base, ); mainGroup = D10000000000000000000001; productRefGroup = D10000000000000000000001; projectDirPath = ""; projectRoot = ""; targets = (E10000000000000000000001 /* WolvenKitMac */, ); };
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		F10000000000000000000001 /* Project configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000005 /* Debug */, F10000000000000000000006 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		F10000000000000000000002 /* Target configuration list */ = {isa = XCConfigurationList; buildConfigurations = (F10000000000000000000007 /* Debug */, F10000000000000000000008 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		F10000000000000000000005 /* Debug project */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Debug; };
+		F10000000000000000000006 /* Release project */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Release; };
+		F10000000000000000000007 /* Debug target */ = {isa = XCBuildConfiguration; buildSettings = {ARCHS = arm64; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WolvenKit/Resources/Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.wolvenkit.mac; PRODUCT_NAME = WolvenKitMac; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; }; name = Debug; };
+		F10000000000000000000008 /* Release target */ = {isa = XCBuildConfiguration; buildSettings = {ARCHS = arm64; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WolvenKit/Resources/Info.plist; MACOSX_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.wolvenkit.mac; PRODUCT_NAME = WolvenKitMac; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+/* End XCConfigurationList section */
+
+	};
+	rootObject = E10000000000000000000002 /* Project object */;
+}
