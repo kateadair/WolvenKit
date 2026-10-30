@@ -66,12 +66,14 @@ struct WolvenProject: Identifiable, Hashable, Sendable {
 struct ProjectFile: Identifiable, Hashable, Sendable {
     let url: URL
     let relativePath: String
+    let byteCount: Int64
 
     var id: String { relativePath }
 
-    var byteCount: Int64 {
-        let values = try? url.resourceValues(forKeys: [.fileSizeKey])
-        return Int64(values?.fileSize ?? 0)
+    init(url: URL, relativePath: String, byteCount: Int64 = 0) {
+        self.url = url
+        self.relativePath = relativePath
+        self.byteCount = byteCount
     }
 }
 
